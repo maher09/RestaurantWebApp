@@ -1,0 +1,18 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @foreach (var item in Model)
+    {
+
+
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page"
+               href="@item.MasterMenuUrl">@item.MasterMenuName</a>
+        </li>
+
+
+    }
+    <li class="nav-item">
+        <a class="nav-link text-primary" aria-current="page" asp-action="LogOut" asp-controller="Account">Hi : @User.Identity.Name</a>
+    </li>
+
+}

@@ -1,0 +1,69 @@
+﻿@model Restaurant.Areas.Admin.ViewModel.MVMasterCategoryMenu
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MasterCategoryMenu</h4>
+<hr />
+
+
+
+<div class="pagetitle">
+    <h1>Master Menu</h1>
+
+    <nav>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterMenu">Master Menu</a></li>
+
+            <li class="breadcrumb-item active">Edit</li>
+        </ol>
+
+    </nav>
+
+</div>
+
+
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title m-0"></h5>
+                        <form asp-action="Edit" class="row g-3">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="col-md-6">
+                                <label asp-for="MasterCategoryMenuId" class="control-label"></label>
+                                <input asp-for="MasterCategoryMenuId" readonly class="form-control" />
+                                <span asp-validation-for="MasterCategoryMenuId" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="MasterCategoryMenuName" class="control-label"></label>
+                                <input asp-for="MasterCategoryMenuName" class="form-control" />
+                                <span asp-validation-for="MasterCategoryMenuName" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group text-end">
+
+                                <a asp-action="Index" class="btn btn-success">Back</a>
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>

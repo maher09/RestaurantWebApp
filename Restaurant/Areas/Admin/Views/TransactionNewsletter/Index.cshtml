@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Restaurant.Models.TransactionNewsletter>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="pagetitle">
+    <h1>TransactionNewsletter</h1>
+    <div class="row">
+        <div class="col-md-9">
+            <nav>
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li class="breadcrumb-item active">TransactionNewsletter</li>
+                </ol>
+
+            </nav>
+        </div>
+        <div class="col-md-3 text-end">
+            <a asp-action="Create" class="btn btn-warning">Create New</a>
+        </div>
+    </div>
+</div>
+
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <p></p>
+
+
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TransactionNewsletterEmail)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TransactionNewsletterEmail)
+                                    </td>
+                                    <td>
+                                        <a href="" class="csDelete" data-paths="@Url.ActionLink("Delete", "TransactionBookTable", new { idDelete = item.TransactionNewsletterId })" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="ri-delete-bin-4-line" style="font-size:23px;"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

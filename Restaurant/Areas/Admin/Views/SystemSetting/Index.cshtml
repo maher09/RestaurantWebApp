@@ -1,0 +1,248 @@
+﻿@model IEnumerable<Restaurant.Models.SystemSetting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="pagetitle">
+    <h1>System Setting</h1>
+    <div class="row">
+        <div class="col-md-9">
+            <nav>
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li class="breadcrumb-item active">System Setting</li>
+                </ol>
+
+            </nav>
+        </div>
+        <div class="col-md-3 text-end">
+            <a asp-action="Create" class="btn btn-warning">Create New</a>
+        </div>
+    </div>
+</div>
+
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <p></p>
+
+
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                                            <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingLogoImageUrl)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingLogoImageUrl2)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingCopyright)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingWelcomeNoteTitle)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingWelcomeNoteBreef)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingWelcomeNoteDesc)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingWelcomeNoteUrl)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingWelcomeNoteImageUrl)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SystemSettingMapLocation)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsActive)
+                                </th
+
+
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingLogoImageUrl)
+                                             </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingLogoImageUrl2)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingCopyright)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingWelcomeNoteTitle)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingWelcomeNoteBreef)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingWelcomeNoteDesc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingWelcomeNoteUrl)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingWelcomeNoteImageUrl)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SystemSettingMapLocation)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IsActive)
+                                            </td>
+
+
+                                    <td>
+
+                                        <a asp-action="Active" asp-route-id="@item.SystemSettingId">
+
+                                            @if (item.IsActive)
+                                            {
+                                                <i class="ri-checkbox-circle-fill" style="font-size:23px;color:green"></i>
+
+                                            }
+                                            else
+                                            {
+                                                <i class=" ri-close-circle-fill" style="font-size:23px;;color:red"></i>
+
+                                            }
+
+
+                                        </a>
+
+                                        |
+                                        <a asp-action="Edit" asp-route-id="@item.SystemSettingId"><i class="ri-edit-box-line" style="font-size:23px;"></i></a> |
+
+                                        <a href="" class="csDelete" data-paths="@Url.ActionLink("Delete", "SystemSetting", new { idDelete = item.SystemSettingId })" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="ri-delete-bin-4-line" style="font-size:23px;"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation..!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Area You Sure Delete This Row?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancel">Cancel</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var UrlPath = "";
+    $(function () {
+
+        $(".csDelete").on("click", function () {
+            UrlPath = $(this).data("paths")
+        })
+        $("#btnConfirmDelete").on("click", function () {
+            window.location = UrlPath;
+            UrlPath = "";
+
+        })
+        $("#btnCancel").on("click", function () {
+            UrlPath = "";
+
+        })
+
+    })
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+ >
+            <th>
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDelete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SystemSettingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SystemSettingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SystemSettingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,129 @@
+﻿@model Restaurant.ViewModels.HomeModels
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "_LayoutForAllPage";
+}
+
+
+
+
+<div class="breadcrumb-area bg-img ptb-80" style="background-image:url(/assets/img/banner/breath.jpg);">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <h3>menu</h3>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="active">menu page </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="product-menu-area pt-100 pb-70 gray-bg">
+    <div class="container">
+        <div class="section-title text-center mb-50">
+            <h2>Our Food Menu</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim nostrud exercitation ullamco laboris nisi.</p>
+        </div>
+        <div class="menu-tab-wrap mb-50">
+            <div class="menu-tab-list nav text-center">
+                <a class="active" href="#tab1" data-bs-toggle="tab">
+                    All item
+                </a>
+                @foreach (var item in Model.ListMasterCategoryMenu)
+                {
+                    <a href="#Cat-@item.MasterCategoryMenuId" data-bs-toggle="tab">
+                        @item.MasterCategoryMenuName
+                    </a>
+                }
+
+
+            </div>
+        </div>
+        <div class="tab-content jump">
+            <div id="tab1" class="tab-pane active">
+                <div class="row">
+                    @foreach (var item in Model.ListMasterItemMenu)
+                    {
+                        <div class="col-lg-6">
+                            <div class="single-menu-product mb-30">
+                                <div class="menu-product-img">
+                                    <img alt="" src="/images/@item.MasterItemMenuImageUrl">
+                                </div>
+                                <div class="menu-product-content">
+                                    <div class="menu-title-price">
+                                        <div class="menu-title">
+                                            @Html.Raw(item.MasterItemMenuTitle)
+                                        </div>
+                                        <div class="menu-price">
+                                            <span>$@Html.Raw(item.MasterItemMenuPrice)</span>
+                                        </div>
+                                    </div>
+                                    @Html.Raw(item.MasterItemMenuDesc)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            @foreach (var item in Model.ListMasterCategoryMenu)
+            {
+
+                <div id="Cat-@item.MasterCategoryMenuId" class="tab-pane">
+                    <div class="row">
+                        @foreach (var itemMenu in Model.ListMasterItemMenu.Where(x => x.MasterCategoryMenuId == item.MasterCategoryMenuId).ToList())
+                        {
+                            <div class="col-lg-6">
+                                <div class="single-menu-product mb-30">
+                                    <div class="menu-product-img">
+                                        <img alt="" src="/images/@itemMenu.MasterItemMenuImageUrl">
+                                    </div>
+                                    <div class="menu-product-content">
+                                        <div class="menu-title-price">
+                                            <div class="menu-title">
+                                                @Html.Raw(itemMenu.MasterItemMenuTitle)
+                                            </div>
+                                            <div class="menu-price">
+                                                <span>$@Html.Raw(itemMenu.MasterItemMenuPrice)</span>
+                                            </div>
+                                        </div>
+                                        @Html.Raw(itemMenu.MasterItemMenuDesc)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="brand-logo-area ptb-100">
+    <div class="container">
+        <div class="brand-logo-active owl-carousel">
+            <div class="single-brand-logo">
+                <img alt="" src="assets/img/brand-logo/1.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="assets/img/brand-logo/2.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="assets/img/brand-logo/3.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="assets/img/brand-logo/4.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="assets/img/brand-logo/5.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="assets/img/brand-logo/2.png">
+            </div>
+        </div>
+    </div>
+</div>
